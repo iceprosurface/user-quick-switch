@@ -36,8 +36,9 @@ async function setupContextMenu() {
   }
 }
 
-chrome.tabs.onActivated.addListener(() => setupContextMenu());
-chrome.storage.onChanged.addListener(() => setupContextMenu());
+chrome.storage.onChanged.addListener(() => {
+  chrome.contextMenus.removeAll(() => setupContextMenu());
+});
 chrome.runtime.onInstalled.addListener(() => setupContextMenu());
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   if (!tab) {

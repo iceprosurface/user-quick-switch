@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "User Quick Switch",
-  "version": "1.0.0",
-  "permissions": ["cookies", "tabs", "storage", "scripting", "contextMenus"],
+  "version": "1.0.1",
+  "permissions": ["cookies", "activeTab", "storage", "scripting", "contextMenus"],
   "host_permissions": [
     "https://*/*",
     "http://*/*"

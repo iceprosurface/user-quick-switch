@@ -5,6 +5,7 @@ export function useStorageState() {
   const [selected, setSelected] = createSignal<string[]>([]);
 
   function toggle(value: string) {
+    debugger;
     if (selected().includes(value)) {
       setSelected(selected().filter((v) => v !== value));
     } else {
