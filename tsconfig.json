@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "target": "es6",
+        "moduleResolution": "bundler",
+        "module": "ES6",
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js",
+        "esModuleInterop": true,
+        "sourceMap": false,
+        "rootDir": "src",
+        "outDir": "dist/js",
+        "noEmitOnError": true,
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "typeRoots": [ "node_modules/@types" ]
+    }
+}
