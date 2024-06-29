@@ -3,8 +3,9 @@
   "name": "User Quick Switch",
   "version": "1.0.0",
   "permissions": ["cookies", "tabs", "storage", "scripting", "contextMenus"],
-  "optional_host_permissions": [
-    "*://*/*"
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
   ],
   "action": {
     "default_popup": "index.html"
