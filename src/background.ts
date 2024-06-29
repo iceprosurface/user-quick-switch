@@ -1,5 +1,5 @@
 import { applyIdentity, getIdList, Identity } from "./utils/identity";
-
+import { debounce } from "lodash-es";
 function removeContext(name: string): Promise<void> {
   return new Promise((resolve) => {
     chrome.contextMenus.remove(name, () => {
@@ -45,15 +45,10 @@ async function setupContextMenu() {
     await createContextMenu(id, id);
   }
 }
-chrome.tabs.onActivated.addListener(async () => {
-  await setupContextMenu();
-});
-chrome.storage.onChanged.addListener(async () => {
-  await setupContextMenu();
-});
-chrome.runtime.onInstalled.addListener(async () => {
-  await setupContextMenu();
-});
+const debounceSetupContextMenu = debounce(setupContextMenu, 200);
+chrome.tabs.onActivated.addListener(() => debounceSetupContextMenu());
+chrome.storage.onChanged.addListener(() => debounceSetupContextMenu());
+chrome.runtime.onInstalled.addListener(() => debounceSetupContextMenu());
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   if (!tab) {
     return;
